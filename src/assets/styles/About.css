@@ -10,3 +10,126 @@ section {
     font-size: 1.2rem;
   }
   
+.subWrapAM{
+  width: 100;
+  max-width: 2000px;
+  padding: 10px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+}  
+
+/* IMG */
+
+.img-aboutMe{
+  width: 250px;
+  height: 300px;
+  border: 5px solid var(--web-color);
+  border-radius: 15px;
+  position: relative;
+}
+
+.img-aboutMe img{
+  position: absolute;
+  top: 20px;
+  left: -10px;
+  object-fit: cover;
+  height: 275px;
+  width: 250px;
+  border-radius: 15px;
+}
+
+/* Contenido */
+
+.subWrapAM .content-aboutMe{
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20;
+}
+.subWrapAM .content-aboutMe h2{
+  color: #fff;
+}
+.subWrapAM .content-aboutMe p{
+  color: #b0b0b0;
+}
+
+/* Contenedor de los botones */
+.btnContainer{
+  display: flex;
+  gap: 15px;
+  justify-content: center; /* Centrar los botones horizontalmente */
+  margin-top: 1em; /* Ajustar la posición del contenedor de botones */
+}
+.btnAboutMe{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btnAboutMe {
+  --glow-color: rgb(35, 33, 166);
+  --glow-spread-color: rgba(35, 23, 208, 0.781);
+  --enhanced-glow-color: rgb(60, 50, 206);
+  --btn-color: rgb(6, 6, 36);
+  border: .25em solid var(--glow-color);
+  padding: 1em 3em;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  box-shadow: 0 0 0.5em .15em var(--glow-color),
+  0 0 1.5em 0.5em var(--glow-spread-color),
+  inset 0 0 .75em .25em var(--glow-color);
+  text-shadow: 0 0 .5em var(--glow-color);
+  position: relative;
+  transition: all 0.3s;
+  margin-top: 2em; /* Ajustar la posición del botón */
+}
+
+.btnAboutMe::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 100%; /* Ajustar la posición para evitar la sombra que se extiende hacia abajo */
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--glow-spread-color);
+  filter: blur(1em); /* Reducir el desenfoque */
+  opacity: .4; /* Reducir la opacidad */
+  transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+  clip-path: inset(0 10em 0 10em); /* Limitar la extensión de la sombra */
+}
+
+.btnAboutMe:hover {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+  box-shadow: 0 0 0.5em .15em var(--glow-color),
+  0 0 2em 1em var(--glow-spread-color),
+  inset 0 0 .75em .25em var(--glow-color);
+}
+
+.btnAboutMe:active {
+  box-shadow: 0 0 0.3em .15em var(--glow-color),
+  0 0 1.5em 0.5em var(--glow-spread-color),
+  inset 0 0 .5em .25em var(--glow-color);
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .subWrapAM{
+      margin: 50px 0;
+      flex-direction: column;
+      gap: 100px;
+    }
+    .subWrapAM .content-aboutMe{
+      align-items: center;
+      text-align: center;
+      gap: 50px;
+    }
+}
