@@ -1,45 +1,66 @@
-.nav-footer{
-    width: 100%;
-    max-width: 2000px;
-    height: 100px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-.nav-footer h1{
-    cursor: pointer;
-    color: var(--web-color);
-    transition: color .4s ease;
-    font-size: 2.4em;
-}
-.nav-footer h1:hover{
-    color: #ff7d04;
-    transition: color .4s ease;
+
+.footersubWrapAM {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 20px; /* Ajustado para un padding uniforme */
 }
 
-/* Nav links */ 
+.footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #1a1a1a; /* Fondo oscuro similar a Skills */
+  color: #b0b0b0; /* Color de texto similar */
+  margin-bottom: 30px;
+}
 
-.nav-footer ul{
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+.footer p {
+  color: #ffffff;
+  margin-top: 20px; /* Aumenta el margen superior para separarlo de las redes sociales */
 }
-.nav-footer li{
-    list-style: none;
+
+.footer ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+  margin: 0; /* Remueve márgenes */
 }
-.nav-footer li .btnHeader{
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
-    text-decoration: none;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    transition: color .4s ease;
+
+.footer li {
+  list-style: none;
 }
-.nav-footer li .btnHeader:hover{
-    color: var(--web-color);
-    transition: color .4s ease;
+
+.footer a {
+  color: #b0b0b0;
+  text-decoration: none;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Espacio entre el icono y el texto */
+}
+
+.footer a:hover {
+  color: #ffffff;
+  text-decoration: underline; /* Subraya el texto al pasar el mouse */
+}
+
+@media (min-width: 600px) {
+  .footer ul {
+    gap: 30px;
+  }
+}
+
+@media (min-width: 900px) {
+  .footer ul {
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footer ul {
+    gap: 50px;
+  }
 }

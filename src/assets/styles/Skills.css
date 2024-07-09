@@ -1,0 +1,84 @@
+
+.subWrapAM {
+  margin-top: 2rem;
+}
+
+.subWrapAM h2 {
+  color: #fff;
+  text-align: center;
+}
+.skills-section {
+  margin-top: 2rem;
+  text-align: center;
+  padding: 2rem;
+  background-color: #1a1a1a; /* Fondo oscuro similar a About */
+  color: #b0b0b0; /* Color de texto similar */
+}
+
+.skills-section h2 {
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 50px;
+}
+
+@media (min-width: 600px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .skills-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.skill-card {
+  --glow-color: rgb(35, 33, 166);
+  --glow-spread-color: rgba(35, 23, 208, 0.781);
+  --enhanced-glow-color: rgb(60, 50, 206);
+  --btn-color: rgb(6, 6, 36);
+  border: .25em solid var(--glow-color);
+  padding: 1em 3em;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  box-shadow: 0 0 0.5em .15em var(--glow-color),
+  0 0 1.5em 0.5em var(--glow-spread-color),
+  inset 0 0 .75em .25em var(--glow-color);
+  text-shadow: 0 0 .5em var(--glow-color);
+  position: relative;
+  transition: all 0.3s;
+  margin-top: 1em; 
+  text-align: center;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+}
+
+.skill-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.skill-card p {
+  font-size: 1.2em;
+  color: #fff;
+  margin: 0;
+}

@@ -57,7 +57,7 @@ h1 {
 /*General*/
 
 .wrapContent{
-  width: 100%;
+  width: auto;
   display: flex;
   justify-content: center;
   align-items: center;

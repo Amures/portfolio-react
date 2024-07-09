@@ -1,5 +1,6 @@
 .heroContent{
     display: flex;
+    padding-top: 0px;
     justify-content: space-around;
     align-items: center;
     padding: 50 px 0;
@@ -11,7 +12,7 @@
 
 .heroContent h1{
     font-weight: bold ;
-    font-size: 4em;
+    font-size: 5em;
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Alinea el texto a la izquierda */
@@ -33,13 +34,28 @@
 }
 
 
+.imgHero{
+    width: auto;
+    height: auto;
+}
 
+.highlight{
+    color: #a8a8a8;
+    margin-right: 5px;
+}
 .imContent{
     display: flex;
     align-items: center;
     font-size: 2em;
 }
 
+.ideaContent {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    color: #fff;
+    
+}
 /* Btn Hero */
 .btnHero {
     --glow-color: rgb(35, 33, 166);
@@ -49,7 +65,7 @@
     border: .25em solid var(--glow-color);
     padding: 1em 3em;
     color: #fff;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
     background-color: var(--btn-color);
     border-radius: 1em;
@@ -60,22 +76,24 @@
     text-shadow: 0 0 .5em var(--glow-color);
     position: relative;
     transition: all 0.3s;
-    margin-top: 2em; /* Ajustar la posición del botón */
+    margin-top: 1.5em; 
+    margin-left: 6rem;
+    margin-right: 5rem;
 }
 
 .btnHero::after {
     pointer-events: none;
     content: "";
     position: absolute;
-    top: 100%; /* Ajustar la posición para evitar la sombra que se extiende hacia abajo */
+    top: 100%;
     left: 0;
     height: 100%;
     width: 100%;
     background-color: var(--glow-spread-color);
-    filter: blur(1em); /* Reducir el desenfoque */
-    opacity: .4; /* Reducir la opacidad */
+    filter: blur(1em); 
+    opacity: .4; 
     transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
-    clip-path: inset(0 10em 0 10em); /* Limitar la extensión de la sombra */
+    clip-path: inset(0 10em 0 10em); 
 }
 
 .btnHero:hover {

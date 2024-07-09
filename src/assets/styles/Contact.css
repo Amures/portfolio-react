@@ -1,0 +1,190 @@
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.contact-info {
+    flex: 1;
+    margin-right: 10px;
+    margin-left: 10%;
+}
+
+.contact-info h1 {
+    font-size: 2em;
+    color: #2ea6f2;
+}
+
+.contact-info h1 span {
+    color: white;
+}
+
+.contact-info p {
+    margin: 10px 0;
+}
+.contact-info hr {
+    border-bottom:  #404040; /* Línea separadora */
+    width: auto;
+    margin: 10px 0;
+    margin-right: 5%;
+}
+
+.contact-details p {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.contact-details p:before {
+    margin-right: 10px;
+}
+
+.contact-details p:nth-child(2):before {
+    content: '📧';
+}
+
+.contact-details p:nth-child(3):before {
+    content: '🏠';
+}
+
+.contact-form {
+    flex: 1;
+    max-width: 400px;
+    background-color: #0e1a30;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-right: 10%;
+    margin-left: 15%;
+}
+
+.form-switch {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Aumenta el espacio inferior */
+}
+
+.contact-button {
+    flex: 1;
+    padding: 10px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.contact-button.active {
+    background-color: #000000;
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Añade espacio entre los inputs */
+}
+
+.form-row input,
+.form-row select {
+    flex: 1;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+.contact-form textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.contact-form button {
+    --glow-color: rgb(35, 33, 166);
+    --glow-spread-color: rgba(35, 23, 208, 0.781);
+    --enhanced-glow-color: rgb(60, 50, 206);
+    --btn-color: rgb(6, 6, 36);
+    border: .25em solid var(--glow-color);
+    padding: 1em;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 0.5em .15em var(--glow-color),
+    0 0 1.5em 0.5em var(--glow-spread-color),
+    inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+
+}
+
+.schedule-call {
+    text-align: center;
+}
+
+.schedule-call h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.schedule-call h2 span {
+    color: #007bff;
+}
+
+.schedule-button {
+    flex: 1;
+    padding: 10px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+
+.schedule-button.active {
+    background-color: #000000;
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.schedule-button:hover {
+    background-color: #007bbf; /* Color de hover */
+}
+
+
+.schedule-call p {
+    font-size: 0.9em;
+}
+
+.schedule-call a {
+    color: #ff0000;
+    text-decoration: none;
+}

@@ -1,5 +1,6 @@
-import React from 'react';
 import '../assets/styles/CV.css';
+
+
 const CV = () => {
   return (
     <section>

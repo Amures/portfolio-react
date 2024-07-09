@@ -1,15 +1,15 @@
 section {
-    padding: 2rem;
-  }
+  padding: 2rem;
+}
   
-  h2 {
-    color: #333;
-  }
+h2 {
+  color: #333;
+}
   
-  p {
-    font-size: 1.2rem;
-  }
-  
+p {
+  font-size: 1.2rem;
+}
+
 .subWrapAM{
   width: 100;
   max-width: 2000px;
@@ -17,28 +17,41 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 35px;
+  gap: 30px;
 }  
 
 /* IMG */
-
-.img-aboutMe{
-  width: 250px;
-  height: 300px;
-  border: 5px solid var(--web-color);
-  border-radius: 15px;
-  position: relative;
+/* Contenedor de la imagen */
+.img-aboutMe {
+  width: 300px; /* Ancho del contenedor */
+  height: 325px; /* Alto del contenedor */
+  border: 5px solid var(--web-color); /* Borde con color personalizado */
+  border-radius: 15px; /* Bordes redondeados */
+  position: relative; /* Posicionamiento relativo para las imágenes internas */
+  /*overflow: hidden;*/ /* Oculta cualquier desbordamiento */
 }
 
-.img-aboutMe img{
-  position: absolute;
-  top: 20px;
-  left: -10px;
-  object-fit: cover;
-  height: 275px;
-  width: 250px;
-  border-radius: 15px;
+/* Imagen principal */
+.img-aboutMe img {
+  position: absolute; /* Posicionamiento absoluto dentro del contenedor */
+  top: -20px; /* Mueve la imagen hacia arriba */
+  left: -14px; /* Mueve la imagen hacia la izquierda */
+  height: 335px; /* Alto de la imagen */
+  width: 300px; /* Ancho de la imagen */
+  object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+  border-radius: 15px; /* Bordes redondeados */
+  opacity: 0; /* Inicia con opacidad 0 */
+  transition: opacity 1.25s ease; /* Transición de opacidad suave de 1 segundo */
 }
+
+.image.fade-in {
+  opacity: 1; /* Muestra la imagen */
+}
+
+.image.fade-out {
+  opacity: 0; /* Oculta la imagen */
+}
+
 
 /* Contenido */
 
@@ -48,12 +61,14 @@ section {
   flex-direction: column;
   justify-content: center;
   gap: 20;
+  font-size: large;
 }
 .subWrapAM .content-aboutMe h2{
   color: #fff;
 }
 .subWrapAM .content-aboutMe p{
   color: #b0b0b0;
+  font-size: 23px;
 }
 
 /* Contenedor de los botones */
@@ -66,7 +81,6 @@ section {
 .btnAboutMe{
   display: flex;
   align-items: center;
-  gap: 20px;
 }
 
 .btnAboutMe {
@@ -77,14 +91,14 @@ section {
   border: .25em solid var(--glow-color);
   padding: 1em 3em;
   color: #fff;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: bold;
   background-color: var(--btn-color);
   border-radius: 1em;
   outline: none;
   box-shadow: 0 0 0.5em .15em var(--glow-color),
-  0 0 1.5em 0.5em var(--glow-spread-color),
-  inset 0 0 .75em .25em var(--glow-color);
+              0 0 1.5em 0.5em var(--glow-spread-color),
+              inset 0 0 .75em .25em var(--glow-color);
   text-shadow: 0 0 .5em var(--glow-color);
   position: relative;
   transition: all 0.3s;
@@ -110,14 +124,14 @@ section {
   color: var(--btn-color);
   background-color: var(--glow-color);
   box-shadow: 0 0 0.5em .15em var(--glow-color),
-  0 0 2em 1em var(--glow-spread-color),
-  inset 0 0 .75em .25em var(--glow-color);
+              0 0 2em 1em var(--glow-spread-color),
+              inset 0 0 .75em .25em var(--glow-color);
 }
 
 .btnAboutMe:active {
   box-shadow: 0 0 0.3em .15em var(--glow-color),
-  0 0 1.5em 0.5em var(--glow-spread-color),
-  inset 0 0 .5em .25em var(--glow-color);
+              0 0 1.5em 0.5em var(--glow-spread-color),
+              inset 0 0 .5em .25em var(--glow-color);
 }
 
 

@@ -1,0 +1,86 @@
+.projects-section {
+    text-align: center;
+    padding: 2rem;
+    background-color: #002262; /* Fondo oscuro */
+    color: #b0b0b0; /* Color de texto */
+}
+  
+.projects-section h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+  
+.projects-section p {
+    color: #b0b0b0;
+    margin-bottom: 2rem;
+}
+  
+.slider-container {
+    position: relative; /* Asegura que los pseudo-elementos se posicionen correctamente */
+    margin: 0 auto;
+    width: 80%; /* Ajusta el ancho según sea necesario */
+}
+  
+.slick-slider {
+    margin: 0 auto;
+    overflow: visible; /* Permite que las tarjetas sobresalgan del contenedor */
+}
+  
+.slider-container::before,
+.slider-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50px; /* Ancho del difuminado */
+    z-index: 1; /* Asegura que esté sobre el contenido del slider */
+}
+  
+.slider-container::before {
+    left: 0;
+    background: linear-gradient(to right, #002262, rgba(26, 26, 26, 0));
+}
+  
+.slider-container::after {
+    right: 0;
+    background: linear-gradient(to left, #002262, rgba(26, 26, 26, 0));
+}
+  
+.project-card {
+    background: #242424; /* Fondo de las tarjetas */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s; /* Añade la transición para la sombra */
+    margin: 1rem; /* Crea espacio alrededor de las tarjetas */
+}
+  
+.project-card:hover {
+    transform: scale(1.1); /* Escala la tarjeta en ambas direcciones */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aumenta la sombra para darle profundidad */
+}
+  
+.project-logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+  
+.project-card h3 {
+    font-size: 1.5rem;
+    color: #ffffff; /* Ajustado a blanco */
+    margin-bottom: 0.5rem;
+}
+  
+.project-card a {
+    color: #007BFF;
+    text-decoration: none;
+}
+  
+.project-card a:hover {
+    text-decoration: underline;
+}
+  
