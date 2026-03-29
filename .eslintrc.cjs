@@ -18,4 +18,10 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
+  overrides: [
+    {
+      files: ['*.config.js', 'tailwind.config.js', 'postcss.config.js'],
+      env: { node: true },
+    },
+  ],
 }

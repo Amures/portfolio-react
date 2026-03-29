@@ -7,8 +7,8 @@
     bottom: 0;
     margin: auto;
     overflow: hidden;
-    pointer-events: none; /* Asegúrate de que las ondas no interfieran con los clics */
-    z-index: 1000; /* Asegúrate de que las ondas no cubran el contenido */
+    pointer-events: none;
+    z-index: 0;
 }
 
 .line-1, .line-2, .line-3 {

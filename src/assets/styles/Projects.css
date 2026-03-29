@@ -1,86 +1,119 @@
 .projects-section {
-    text-align: center;
-    padding: 2rem;
-    background-color: #002262; /* Fondo oscuro */
-    color: #b0b0b0; /* Color de texto */
+  text-align: center;
+  padding: 2rem 1rem 3rem;
+  background-color: #002262;
+  color: #b0b0b0;
 }
-  
+
 .projects-section h2 {
-    font-size: 2rem;
-    color: #ffffff;
-    margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
 }
-  
-.projects-section p {
-    color: #b0b0b0;
-    margin-bottom: 2rem;
+
+.projects-intro {
+  color: #b0b0b0;
+  margin-bottom: 2rem;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
 }
-  
-.slider-container {
-    position: relative; /* Asegura que los pseudo-elementos se posicionen correctamente */
-    margin: 0 auto;
-    width: 80%; /* Ajusta el ancho según sea necesario */
+
+.projects-intro-link {
+  color: #5eb8ff;
+  font-weight: 600;
 }
-  
-.slick-slider {
-    margin: 0 auto;
-    overflow: visible; /* Permite que las tarjetas sobresalgan del contenedor */
+
+.projects-intro-link:hover {
+  text-decoration: underline;
 }
-  
-.slider-container::before,
-.slider-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 50px; /* Ancho del difuminado */
-    z-index: 1; /* Asegura que esté sobre el contenido del slider */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
 }
-  
-.slider-container::before {
-    left: 0;
-    background: linear-gradient(to right, #002262, rgba(26, 26, 26, 0));
+
+@media (min-width: 600px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
-  
-.slider-container::after {
-    right: 0;
-    background: linear-gradient(to left, #002262, rgba(26, 26, 26, 0));
+
+@media (min-width: 960px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
-  
+
 .project-card {
-    background: #242424; /* Fondo de las tarjetas */
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s; /* Añade la transición para la sombra */
-    margin: 1rem; /* Crea espacio alrededor de las tarjetas */
+  background: #242424;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 1.25rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
-  
+
 .project-card:hover {
-    transform: scale(1.1); /* Escala la tarjeta en ambas direcciones */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aumenta la sombra para darle profundidad */
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
 }
-  
-.project-logo {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 1rem;
+
+.project-thumb {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  border-radius: 14px;
+  background: linear-gradient(
+    155deg,
+    rgba(46, 166, 242, 0.22) 0%,
+    rgba(0, 34, 98, 0.55) 100%
+  );
+  border: 1px solid rgba(46, 166, 242, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
-  
+
+.project-thumb svg {
+  width: 56px;
+  height: 56px;
+  display: block;
+}
+
 .project-card h3 {
-    font-size: 1.5rem;
-    color: #ffffff; /* Ajustado a blanco */
-    margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
 }
-  
+
+.project-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #b0b0b0;
+  margin-bottom: auto;
+  padding-bottom: 0.75rem;
+  flex: 1;
+}
+
 .project-card a {
-    color: #007BFF;
-    text-decoration: none;
+  color: #5eb8ff;
+  text-decoration: none;
+  font-weight: 600;
 }
-  
+
 .project-card a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
-  

@@ -2,7 +2,9 @@
 .contact-container {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     padding: 20px;
+    gap: 20px;
 }
 
 .contact-info {
@@ -179,6 +181,19 @@
     background-color: #007bbf; /* Color de hover */
 }
 
+.schedule-button--link {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    line-height: 1.4;
+}
+
+.schedule-button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
 
 .schedule-call p {
     font-size: 0.9em;
@@ -187,4 +202,26 @@
 .schedule-call a {
     color: #ff0000;
     text-decoration: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .contact-container{
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px 16px 40px;
+    }
+    .contact-info{
+        margin: 0 0 20px;
+    }
+    .contact-info h1{
+        font-size: 1.6em;
+    }
+    .contact-form{
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    .form-row{
+        flex-direction: column;
+    }
 }

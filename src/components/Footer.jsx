@@ -29,7 +29,7 @@ const Footer = () => {
             </a>
           </li>
         </ul>
-        <p>&copy; 2024 Antonio. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Antonio Mures. All rights reserved.</p>
       </div>
     </footer>
   );

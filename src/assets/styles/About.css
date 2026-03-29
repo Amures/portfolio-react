@@ -11,7 +11,7 @@ p {
 }
 
 .subWrapAM{
-  width: 100;
+  width: 100%;
   max-width: 2000px;
   padding: 10px 40px;
   display: flex;
@@ -60,7 +60,7 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 20;
+  gap: 20px;
   font-size: large;
 }
 .subWrapAM .content-aboutMe h2{

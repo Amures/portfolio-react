@@ -1,56 +1,72 @@
-import Slider from 'react-slick';
+import { ProjectThumb } from './ProjectThumb';
 import '../assets/styles/Projects.css';
 
+const GITHUB_USER = 'Amures';
+/** Public repos — same list as https://github.com/Amures?tab=repositories */
 const projects = [
-  { name: 'example1', url: 'example1.com', logo: './src/assets/logos/example1.png' },
-  { name: 'example2', url: 'example2.com', logo: './src/assets/logos/example2.png' },
-  { name: 'example3', url: 'example3.com', logo: './src/assets/logos/example3.png' },
-  { name: 'example4', url: 'example4.com', logo: './src/assets/logos/example4.png' },
-  // Agrega más proyectos según sea necesario
-];
+  {
+    slug: 'React-MERN-backend',
+    title: 'MERN backend',
+    description: 'Backend for the MERN + React stack.',
+  },
+  {
+    slug: 'react-MERN-frontend',
+    title: 'MERN frontend',
+    description: 'Calendar app — React frontend.',
+  },
+  {
+    slug: 'journal-app',
+    title: 'Journal app',
+    description: 'Personal journal web app.',
+  },
+  {
+    slug: 'custom-hooks',
+    title: 'Custom hooks',
+    description: 'Reusable React hooks collection.',
+  },
+  {
+    slug: 'portfolio-react',
+    title: 'Portfolio',
+    description: 'This portfolio (React + Vite).',
+  },
+  {
+    slug: 'react-gife-expert',
+    title: 'GifExpert',
+    description: 'GIF search demo app.',
+  },
+].map((p) => ({
+  ...p,
+  url: `https://github.com/${GITHUB_USER}/${p.slug}`,
+}));
 
 const Projects = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
-
   return (
-    <section className='projects-section'>
-        <h2>PROJECTS</h2>
-        <p>Selected work I've taken on in the past.</p>
-        <div className='slider-container'>
-          <Slider {...settings}>
-            {projects.map((project, index) => (
-              <div key={index} className="project-card">
-                <img src={project.logo} alt={`${project.name} logo`} className="project-logo" />
-                <h3>{project.name}</h3>
-                <a href={`https://${project.url}`} target="_blank" rel="noopener noreferrer">{project.url}</a>
-              </div>
-            ))}
-          </Slider>
-        </div>
+    <section className="projects-section">
+      <h2>PROJECTS</h2>
+      <p className="projects-intro">
+        Public repositories from my{' '}
+        <a
+          href={`https://github.com/${GITHUB_USER}?tab=repositories`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="projects-intro-link"
+        >
+          GitHub profile
+        </a>
+        .
+      </p>
+      <div className="projects-grid">
+        {projects.map((project) => (
+          <article key={project.slug} className="project-card">
+            <ProjectThumb slug={project.slug} />
+            <h3>{project.title}</h3>
+            <p className="project-card-desc">{project.description}</p>
+            <a href={project.url} target="_blank" rel="noopener noreferrer">
+              Open on GitHub
+            </a>
+          </article>
+        ))}
+      </div>
     </section>
   );
 };

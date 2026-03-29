@@ -1,4 +1,7 @@
-
+#root {
+  position: relative;
+  z-index: 1;
+}
 
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -57,7 +60,7 @@ h1 {
 /*General*/
 
 .wrapContent{
-  width: auto;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
