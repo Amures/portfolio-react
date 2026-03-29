@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import imgAbout9 from '../assets/imgs-me/img-aboutMe9.png';
 import imgAbout5 from '../assets/imgs-me/img-aboutMe5.png';
-import imgAbout4 from '../assets/imgs-me/img-aboutMe4.png';
+
 import cvPdf from '../assets/CV/CV Antonio Mures.pdf';
 import '../assets/styles/About.css';
 
-const ABOUT_IMAGES = [imgAbout9, imgAbout5, imgAbout4];
+const ABOUT_IMAGES = [imgAbout9, imgAbout5];
 
 const About = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

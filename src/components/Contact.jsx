@@ -10,7 +10,7 @@ const initialFormState = {
   message: '',
 };
 
-const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? '14c01a1f-6dea-4a53-ae66-31a57a52d3de';
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
 const Contact = () => {
   const [formData, setFormData] = useState(initialFormState);
