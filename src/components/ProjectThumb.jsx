@@ -12,6 +12,22 @@ function SvgWrap({ children }) {
 }
 
 const thumbs = {
+  'cv-analyzer-ai-portfolio': (
+    <SvgWrap>
+      <rect x="14" y="10" width="36" height="44" rx="2" stroke={accent} strokeWidth="2" fill="rgba(46,166,242,0.12)" />
+      <path d="M20 20h24M20 28h24M20 36h12" stroke={light} strokeWidth="2" strokeLinecap="round" opacity="0.6" />
+      <circle cx="44" cy="44" r="10" fill={accent} opacity="0.9" />
+      <path d="M41 44l2 2 4-4" stroke="#002262" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </SvgWrap>
+  ),
+  TranscribeAI: (
+    <SvgWrap>
+      <rect x="12" y="16" width="40" height="32" rx="4" stroke={accent} strokeWidth="2" fill="rgba(46,166,242,0.1)" />
+      <path d="M22 32h20M25 24h14M28 40h8" stroke={light} strokeWidth="2" strokeLinecap="round" opacity="0.7" />
+      <path d="M12 32c-4-4-4-8 0-12M52 32c4-4 4-8 0-12" stroke={accent} strokeWidth="2" strokeLinecap="round" opacity="0.5" />
+      <path d="M32 10v6M32 48v6" stroke={dim} strokeWidth="1" strokeDasharray="2 2" />
+    </SvgWrap>
+  ),
   'React-MERN-backend': (
     <SvgWrap>
       <rect x="8" y="12" width="48" height="40" rx="4" stroke={accent} strokeWidth="2" fill="rgba(46,166,242,0.12)" />

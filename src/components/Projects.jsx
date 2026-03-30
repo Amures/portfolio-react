@@ -5,6 +5,19 @@ const GITHUB_USER = 'Amures';
 /** Public repos — same list as https://github.com/Amures?tab=repositories */
 const projects = [
   {
+    slug: 'cv-analyzer-ai-portfolio',
+    title: 'CV Analyzer AI',
+    description: 'AI-powered CV analysis against job descriptions using Google Gemini.',
+    liveUrl: 'https://cv-analyzer-ai-portfolio.vercel.app/',
+  },
+  {
+    slug: 'TranscribeAI',
+    title: 'TranscribeAI',
+    description:
+      'AI-powered audio/video transcription and translation using Whisper & MyMemory.',
+    liveUrl: 'https://transcribe-ai-eight.vercel.app/',
+  },
+  {
     slug: 'React-MERN-backend',
     title: 'MERN backend',
     description: 'Backend for the MERN + React stack.',
@@ -61,9 +74,21 @@ const Projects = () => {
             <ProjectThumb slug={project.slug} />
             <h3>{project.title}</h3>
             <p className="project-card-desc">{project.description}</p>
-            <a href={project.url} target="_blank" rel="noopener noreferrer">
-              Open on GitHub
-            </a>
+            <div className="project-card-links">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="live-link"
+                >
+                  Live Demo
+                </a>
+              )}
+              <a href={project.url} target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+            </div>
           </article>
         ))}
       </div>
