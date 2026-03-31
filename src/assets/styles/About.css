@@ -10,52 +10,52 @@ p {
   font-size: 1.2rem;
 }
 
-.subWrapAM{
+.subWrapAM {
   width: 100%;
-  max-width: 2000px;
-  padding: 10px 40px;
+  max-width: 1200px;
+  padding: 10px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 30px;
+  margin: 0 auto;
 }  
 
 /* IMG */
 /* Contenedor de la imagen */
 .img-aboutMe {
-  width: 300px; /* Ancho del contenedor */
-  height: 325px; /* Alto del contenedor */
-  border: 5px solid var(--web-color); /* Borde con color personalizado */
-  border-radius: 15px; /* Bordes redondeados */
-  position: relative; /* Posicionamiento relativo para las imágenes internas */
-  /*overflow: hidden;*/ /* Oculta cualquier desbordamiento */
+  width: 300px;
+  height: 325px;
+  border: 5px solid var(--web-color);
+  border-radius: 15px;
+  position: relative;
 }
 
 /* Imagen principal */
 .img-aboutMe img {
-  position: absolute; /* Posicionamiento absoluto dentro del contenedor */
-  top: -20px; /* Mueve la imagen hacia arriba */
-  left: -14px; /* Mueve la imagen hacia la izquierda */
-  height: 335px; /* Alto de la imagen */
-  width: 300px; /* Ancho de la imagen */
-  object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
-  border-radius: 15px; /* Bordes redondeados */
-  opacity: 0; /* Inicia con opacidad 0 */
-  transition: opacity 1.25s ease; /* Transición de opacidad suave de 1 segundo */
+  position: absolute;
+  top: -20px;
+  left: -14px;
+  height: 335px;
+  width: 300px;
+  object-fit: cover;
+  border-radius: 15px;
+  opacity: 0;
+  transition: opacity 1.25s ease;
 }
 
 .image.fade-in {
-  opacity: 1; /* Muestra la imagen */
+  opacity: 1;
 }
 
 .image.fade-out {
-  opacity: 0; /* Oculta la imagen */
+  opacity: 0;
 }
 
 
 /* Contenido */
 
-.subWrapAM .content-aboutMe{
+.subWrapAM .content-aboutMe {
   max-width: 500px;
   display: flex;
   flex-direction: column;
@@ -63,27 +63,28 @@ p {
   gap: 20px;
   font-size: large;
 }
-.subWrapAM .content-aboutMe h2{
+
+.subWrapAM .content-aboutMe h2 {
   color: #fff;
 }
-.subWrapAM .content-aboutMe p{
+
+.subWrapAM .content-aboutMe p {
   color: #b0b0b0;
-  font-size: 23px;
+  font-size: 1.15rem; /* Reduced from 23px */
+  line-height: 1.6;
 }
 
 /* Contenedor de los botones */
-.btnContainer{
+.btnContainer {
   display: flex;
   gap: 15px;
-  justify-content: center; /* Centrar los botones horizontalmente */
-  margin-top: 1em; /* Ajustar la posición del contenedor de botones */
-}
-.btnAboutMe{
-  display: flex;
-  align-items: center;
+  justify-content: center;
+  margin-top: 1em;
 }
 
 .btnAboutMe {
+  display: flex;
+  align-items: center;
   --glow-color: rgb(35, 33, 166);
   --glow-spread-color: rgba(35, 23, 208, 0.781);
   --enhanced-glow-color: rgb(60, 50, 206);
@@ -102,22 +103,22 @@ p {
   text-shadow: 0 0 .5em var(--glow-color);
   position: relative;
   transition: all 0.3s;
-  margin-top: 2em; /* Ajustar la posición del botón */
+  margin-top: 2em;
 }
 
 .btnAboutMe::after {
   pointer-events: none;
   content: "";
   position: absolute;
-  top: 100%; /* Ajustar la posición para evitar la sombra que se extiende hacia abajo */
+  top: 100%;
   left: 0;
   height: 100%;
   width: 100%;
   background-color: var(--glow-spread-color);
-  filter: blur(1em); /* Reducir el desenfoque */
-  opacity: .4; /* Reducir la opacidad */
+  filter: blur(1em);
+  opacity: .4;
   transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
-  clip-path: inset(0 10em 0 10em); /* Limitar la extensión de la sombra */
+  clip-path: inset(0 10em 0 10em);
 }
 
 .btnAboutMe:hover {
@@ -136,14 +137,37 @@ p {
 
 
 @media only screen and (max-width: 1000px) {
-    .subWrapAM{
-      margin: 50px 0;
-      flex-direction: column;
-      gap: 100px;
-    }
-    .subWrapAM .content-aboutMe{
-      align-items: center;
-      text-align: center;
-      gap: 50px;
-    }
+  .subWrapAM {
+    margin: 30px 0;
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 16px;
+  }
+
+  .subWrapAM .content-aboutMe {
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .subWrapAM .content-aboutMe p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .img-aboutMe {
+    width: 260px;
+    height: 280px;
+  }
+  
+  .img-aboutMe img {
+    height: 290px;
+    width: 260px;
+  }
+  
+  .btnAboutMe {
+    padding: 0.8em 2em;
+    font-size: 14px;
+    margin-top: 1.5em;
+  }
 }

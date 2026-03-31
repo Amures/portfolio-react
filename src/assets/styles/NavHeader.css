@@ -1,28 +1,28 @@
 .nav-header{
     width: 100%;
-    max-width: 2000px;
+    max-width: 1200px; /* Reduced from 2000px */
     height: 100px;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin: 0 auto;
 }
 
 .imgHeader{
-    max-width: 150px; /* Ajusta el tamaño máximo de la imagen */
-    height: auto; /* Mantén la proporción de la imagen */
+    max-width: 150px;
+    height: auto;
 }
 
 .imgHeader img {
-    width: 100%; /* La imagen tomará el 100% del ancho del contenedor .imgHeader */
-    height: auto; /* Mantén la proporción de la imagen */
-    transition: transform 0.3s ease-in-out; /* Suaviza la animación de transformación */
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
 }
 
 .imgHeader img:hover {
-    transform: scale(1.1); /* Agranda el logo un 10% */
+    transform: scale(1.1);
 }
-
 
 /* Nav links */ 
 .nav-header ul{
@@ -48,7 +48,6 @@
 }
 .nav-header li .btnHeader:hover{
     color: #18c0b9;
-    transition: color .4s ease;
 }
 
 /* Media Query para pantallas pequeñas */
@@ -58,7 +57,7 @@
     }
     .nav-header{
         justify-content: center;
-        padding: 0 1rem;
+        padding: 10px 1rem;
         height: auto;
     }
     .nav-header ul{
@@ -67,7 +66,7 @@
         gap: 0.5rem 1rem;
     }
     .nav-header li .btnHeader{
-        font-size: 0.75rem;
-        letter-spacing: 2px;
+        font-size: 0.7rem;
+        letter-spacing: 1px;
     }
 }

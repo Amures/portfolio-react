@@ -6,7 +6,7 @@
     border: none;
     padding: 1rem;
     color: #fff;
-    font-size: 30px;
+    font-size: 24px; /* Reduced from 30px */
     font-weight: bold;
     background-color: var(--btn-color);
     border-radius: 50%;
@@ -20,13 +20,19 @@
     bottom: 2em;
     right: 2em;
     z-index: 1000;
-    opacity: 0; /* Inicialmente oculto */
-    transform: translateY(20px); /* Mover hacia abajo inicialmente */
+    opacity: 0;
+    transform: translateY(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px; /* Added fixed size */
+    height: 60px; /* Added fixed size */
+    cursor: pointer;
 }
 
 .topbtn.visible {
-    opacity: 1; /* Hacer visible */
-    transform: translateY(0); /* Mover a la posición original */
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .topbtn::after {
@@ -47,23 +53,23 @@
 .topbtn:hover {
     color: var(--btn-color);
     background-color: var(--glow-color);
+    transform: scale(1.1);
 }
 
 .topbtn:active {
     box-shadow: 0 0 0.3em .15em var(--glow-color),
     0 0 1.5em 0.5em var(--glow-spread-color),
     inset 0 0 .5em .25em var(--glow-color);
+    transform: scale(0.9);
 }
 
-@media only screen and (max-width: 1000px) {
-    .subWrapAM {
-        margin: 50px 0;
-        flex-direction: column;
-        gap: 100px;
-    }
-    .subWrapAM .content-aboutMe {
-        align-items: center;
-        text-align: center;
-        gap: 50px;
+@media only screen and (max-width: 600px) {
+    .topbtn {
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+        bottom: 1.5em;
+        right: 1.5em;
+        padding: 0.5rem;
     }
 }

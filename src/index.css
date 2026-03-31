@@ -53,12 +53,13 @@ h1 {
   --web-color: #2ea6f2;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   font-family: "Roboto Slab", serif;
   font-optical-sizing: auto;
   font-style: normal;
+  box-sizing: border-box;
 }
 
 
