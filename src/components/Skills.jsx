@@ -30,6 +30,9 @@ const skills = [
 
 const Skills = () => {
   const scrollRef = useRef(null);
+  
+  // Create a doubled array for infinite scrolling
+  const infiniteSkills = [...skills, ...skills];
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
@@ -42,10 +45,13 @@ const Skills = () => {
       if (isMobile) {
         intervalId = setInterval(() => {
           const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
+          const halfWidth = scrollWidth / 2;
           
-          // If we reached the end, go back to the start
-          if (scrollLeft + clientWidth >= scrollWidth - 5) {
-            scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+          // If we've scrolled past the first set, jump back instantly to the start of the second set
+          if (scrollLeft >= halfWidth) {
+            scrollContainer.scrollLeft = 0;
+            // Then do the smooth scroll to the next item
+            scrollContainer.scrollBy({ left: 160, behavior: 'smooth' });
           } else {
             scrollContainer.scrollBy({ left: 160, behavior: 'smooth' });
           }
@@ -57,7 +63,6 @@ const Skills = () => {
 
     const stopAutoPlay = () => clearInterval(intervalId);
 
-    // Pause on touch or hover
     scrollContainer.addEventListener('mouseenter', stopAutoPlay);
     scrollContainer.addEventListener('mouseleave', startAutoPlay);
     scrollContainer.addEventListener('touchstart', stopAutoPlay);
@@ -79,8 +84,8 @@ const Skills = () => {
           <h2>SKILLS</h2>
           <br />
           <div className="skills-grid" ref={scrollRef}>
-            {skills.map((skill) => (
-              <div key={skill.name} className="skill-card">
+            {(window.innerWidth <= 600 ? infiniteSkills : skills).map((skill, index) => (
+              <div key={`${skill.name}-${index}`} className="skill-card">
                 <img src={skill.icon} alt={`${skill.name} icon`} className="skill-icon" />
                 <p>{skill.name}</p>
               </div>

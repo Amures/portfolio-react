@@ -55,6 +55,7 @@ const projects = [
 
 const Projects = () => {
   const scrollRef = useRef(null);
+  const infiniteProjects = [...projects, ...projects];
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
@@ -67,12 +68,12 @@ const Projects = () => {
       if (isMobile) {
         intervalId = setInterval(() => {
           const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
+          const halfWidth = scrollWidth / 2;
           
-          // If we reached the end, go back to the start
-          if (scrollLeft + clientWidth >= scrollWidth - 10) {
-            scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+          if (scrollLeft >= halfWidth - 50) {
+            scrollContainer.scrollLeft = 0;
+            scrollContainer.scrollBy({ left: clientWidth * 0.85 + 20, behavior: 'smooth' });
           } else {
-            // Scroll by one card width (approx 85% of clientWidth + gap)
             scrollContainer.scrollBy({ left: clientWidth * 0.85 + 20, behavior: 'smooth' });
           }
         }, 4000);
@@ -113,8 +114,8 @@ const Projects = () => {
         .
       </p>
       <div className="projects-grid" ref={scrollRef}>
-        {projects.map((project) => (
-          <article key={project.slug} className="project-card">
+        {(window.innerWidth <= 600 ? infiniteProjects : projects).map((project, index) => (
+          <article key={`${project.slug}-${index}`} className="project-card">
             <ProjectThumb slug={project.slug} />
             <h3>{project.title}</h3>
             <p className="project-card-desc">{project.description}</p>
