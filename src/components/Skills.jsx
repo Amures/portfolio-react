@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import iconCSharp from '../assets/icons/c-sharp.png';
 import iconCpp from '../assets/icons/c-.png';
 import iconCss from '../assets/icons/css.png';
@@ -28,13 +29,56 @@ const skills = [
 ];
 
 const Skills = () => {
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let intervalId;
+    const isMobile = window.innerWidth <= 600;
+
+    const startAutoPlay = () => {
+      if (isMobile) {
+        intervalId = setInterval(() => {
+          const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
+          
+          // If we reached the end, go back to the start
+          if (scrollLeft + clientWidth >= scrollWidth - 5) {
+            scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            scrollContainer.scrollBy({ left: 160, behavior: 'smooth' });
+          }
+        }, 3000);
+      }
+    };
+
+    startAutoPlay();
+
+    const stopAutoPlay = () => clearInterval(intervalId);
+
+    // Pause on touch or hover
+    scrollContainer.addEventListener('mouseenter', stopAutoPlay);
+    scrollContainer.addEventListener('mouseleave', startAutoPlay);
+    scrollContainer.addEventListener('touchstart', stopAutoPlay);
+    scrollContainer.addEventListener('touchend', startAutoPlay);
+
+    return () => {
+      stopAutoPlay();
+      scrollContainer.removeEventListener('mouseenter', stopAutoPlay);
+      scrollContainer.removeEventListener('mouseleave', startAutoPlay);
+      scrollContainer.removeEventListener('touchstart', stopAutoPlay);
+      scrollContainer.removeEventListener('touchend', startAutoPlay);
+    };
+  }, []);
+
   return (
     <article className="wrapContent bg1">
       <div className="subWrapAM">
         <div>
           <h2>SKILLS</h2>
           <br />
-          <div className="skills-grid">
+          <div className="skills-grid" ref={scrollRef}>
             {skills.map((skill) => (
               <div key={skill.name} className="skill-card">
                 <img src={skill.icon} alt={`${skill.name} icon`} className="skill-icon" />

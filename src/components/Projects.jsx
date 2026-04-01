@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { ProjectThumb } from './ProjectThumb';
 import '../assets/styles/Projects.css';
 
@@ -53,6 +54,49 @@ const projects = [
 }));
 
 const Projects = () => {
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let intervalId;
+    const isMobile = window.innerWidth <= 600;
+
+    const startAutoPlay = () => {
+      if (isMobile) {
+        intervalId = setInterval(() => {
+          const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
+          
+          // If we reached the end, go back to the start
+          if (scrollLeft + clientWidth >= scrollWidth - 10) {
+            scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            // Scroll by one card width (approx 85% of clientWidth + gap)
+            scrollContainer.scrollBy({ left: clientWidth * 0.85 + 20, behavior: 'smooth' });
+          }
+        }, 4000);
+      }
+    };
+
+    startAutoPlay();
+
+    const stopAutoPlay = () => clearInterval(intervalId);
+
+    scrollContainer.addEventListener('mouseenter', stopAutoPlay);
+    scrollContainer.addEventListener('mouseleave', startAutoPlay);
+    scrollContainer.addEventListener('touchstart', stopAutoPlay);
+    scrollContainer.addEventListener('touchend', startAutoPlay);
+
+    return () => {
+      stopAutoPlay();
+      scrollContainer.removeEventListener('mouseenter', stopAutoPlay);
+      scrollContainer.removeEventListener('mouseleave', startAutoPlay);
+      scrollContainer.removeEventListener('touchstart', stopAutoPlay);
+      scrollContainer.removeEventListener('touchend', startAutoPlay);
+    };
+  }, []);
+
   return (
     <section className="projects-section">
       <h2>PROJECTS</h2>
@@ -68,7 +112,7 @@ const Projects = () => {
         </a>
         .
       </p>
-      <div className="projects-grid">
+      <div className="projects-grid" ref={scrollRef}>
         {projects.map((project) => (
           <article key={project.slug} className="project-card">
             <ProjectThumb slug={project.slug} />
