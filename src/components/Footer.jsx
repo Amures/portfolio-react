@@ -1,38 +1,47 @@
+import { LinkedInIcon, GitHubIcon, InstagramIcon, MailIcon } from './SocialIcons';
 import '../assets/styles/Footer.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-const Footer = () => {
-  return (
-    <footer className="footer bg1 ">
-      <div className='footersubWrapAM'>
-        <ul>
-          <li>
-            <a href="https://www.linkedin.com/company/am-software-solut1ons" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faLinkedin} /> LinkedIn
+const LINKS = [
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/am-software-solut1ons',
+    Icon: LinkedInIcon,
+    external: true,
+  },
+  { label: 'GitHub', href: 'https://github.com/Amures', Icon: GitHubIcon, external: true },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/amsoftware_solutions',
+    Icon: InstagramIcon,
+    external: true,
+  },
+  {
+    label: 'Email',
+    href: 'mailto:am.softwaresolutions4@gmail.com',
+    Icon: MailIcon,
+    external: false,
+  },
+];
+
+const Footer = () => (
+  <footer className="site-footer">
+    <div className="container site-footer__inner">
+      <ul className="site-footer__links">
+        {LINKS.map(({ label, href, Icon, external }) => (
+          <li key={label}>
+            <a href={href} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+              <Icon />
+              <span>{label}</span>
             </a>
           </li>
-          <li>
-            <a href="https://github.com/Amures" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faGithub} /> GitHub
-            </a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/amsoftware_solutions" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faInstagram} /> Instagram
-            </a>
-          </li>
-          <li>
-            <a href="mailto:am.softwaresolutions4@gmail.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faEnvelope} /> Email
-            </a>
-          </li>
-        </ul>
-        <p>&copy; 2026 Antonio Mures. All rights reserved.</p>
-      </div>
-    </footer>
-  );
-};
+        ))}
+      </ul>
+
+      <p className="site-footer__note">
+        © {new Date().getFullYear()} Antonio Mures — built with React and Vite.
+      </p>
+    </div>
+  </footer>
+);
 
 export default Footer;

@@ -1,72 +1,67 @@
-.container {
-    position: fixed;
-    width: 100%;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
+/*
+  A band in the normal flow, not a fixed overlay: nothing ever scrolls across
+  the waves, so they read as the page ending rather than as content sliding
+  over decoration. The frontmost layer is painted in the footer colour, so the
+  band melts into the footer instead of stopping at a hard edge.
+*/
+.waves {
+  position: relative;
+  width: 100%;
+  height: clamp(110px, 14vw, 190px);
+  margin-top: clamp(2rem, 6vw, 4rem);
+  overflow: hidden;
+  pointer-events: none;
 }
 
-.line-1, .line-2, .line-3 {
-    position: absolute;
-    width: 100%;
-    height: 100px; /* Ajusta la altura según sea necesario */
-    bottom: 0;
+.waves__layer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 200%;
+  height: 100%;
+  transform-origin: center bottom;
+  will-change: transform;
+
+  /* The PNG supplies the silhouette; the background supplies the colour. */
+  -webkit-mask-image: var(--wave);
+  mask-image: var(--wave);
+  -webkit-mask-repeat: repeat no-repeat;
+  mask-repeat: repeat no-repeat;
+  -webkit-mask-position: 0 bottom;
+  mask-position: 0 bottom;
+  -webkit-mask-size: 50% 100%;
+  mask-size: 50% 100%;
 }
 
-.line-1 {
-    z-index: 15;
-    opacity: 0.5;
+.waves__layer--1 {
+  background: linear-gradient(180deg, rgba(46, 166, 242, 0.28), rgba(46, 166, 242, 0.1));
 }
 
-.line-2 {
-    z-index: 10;
-    opacity: 0.7;
+.waves__layer--2 {
+  background: linear-gradient(180deg, rgba(10, 42, 99, 0.9), rgba(6, 33, 79, 0.95));
+  animation: wave-drift 22s linear infinite;
 }
 
-.line-3 {
-    z-index: 5;
+.waves__layer--3 {
+  background: var(--footer-bg);
+  animation: wave-drift 30s linear infinite;
 }
 
-.wave {
-    position: absolute;
-    left: 0;
-    width: 200%;
-    height: 100%;
-    background-repeat: repeat no-repeat;
-    background-position: 0 bottom;
-    transform-origin: center bottom;
+@keyframes wave-drift {
+  0% {
+    transform: translateX(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-25%) scaleY(0.65);
+  }
+  100% {
+    transform: translateX(-50%) scaleY(1);
+  }
 }
 
-.wave1 {
-    background-size: 50% 80px;
-    -webkit-background-size: 50% 80px;
-}
-
-.wave2 {
-    background-size: 50% 100px;
-    -webkit-background-size: 50% 100px;
-    animation: animate 14s linear infinite;
-}
-
-.wave3 {
-    background-size: 50% 80px;
-    -webkit-background-size: 50% 80px;
-    animation: animate 20s linear infinite;
-}
-
-@keyframes animate {
-    0% {
-        transform: translateX(0) translateZ(0) scaleY(1);
-    }
-    50% {
-        transform: translateX(-25%) translateZ(0) scaleY(0.5);
-    }
-    100% {
-        transform: translateX(-50%) translateZ(0) scaleY(1);
-    }
+@media (prefers-reduced-motion: reduce) {
+  .waves__layer--2,
+  .waves__layer--3 {
+    animation: none;
+  }
 }

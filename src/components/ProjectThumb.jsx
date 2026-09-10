@@ -1,113 +1,91 @@
 /* eslint-disable react/prop-types -- small presentational helper */
-const accent = '#2ea6f2';
-const dim = '#8eb8d4';
-const light = '#e8f4fc';
 
-function SvgWrap({ children }) {
-  return (
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-      {children}
-    </svg>
-  );
-}
-
-const thumbs = {
+/**
+ * Hand-drawn mark per project. Every path uses `currentColor` so the card can
+ * tint the whole illustration with the project's accent colour.
+ */
+const marks = {
+  mefaltauno: (
+    <>
+      <rect x="6" y="14" width="52" height="36" rx="4" stroke="currentColor" strokeWidth="2" opacity="0.55" />
+      <path d="M32 14v36" stroke="currentColor" strokeWidth="2" opacity="0.45" />
+      <circle cx="32" cy="32" r="7" stroke="currentColor" strokeWidth="2" opacity="0.45" />
+      <path d="M6 24h7v16H6M58 24h-7v16h7" stroke="currentColor" strokeWidth="2" opacity="0.45" />
+      <circle cx="32" cy="32" r="4.5" fill="currentColor" />
+      <path
+        d="M44 45a6 6 0 1 1 12 0"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      <circle cx="50" cy="35" r="3.5" fill="currentColor" />
+    </>
+  ),
+  lugarcito: (
+    <>
+      <path
+        d="M32 8c-8.8 0-16 7-16 15.7C16 35.5 32 56 32 56s16-20.5 16-32.3C48 15 40.8 8 32 8z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinejoin="round"
+        opacity="0.6"
+      />
+      <circle cx="32" cy="23" r="5.5" fill="currentColor" />
+      <path d="M22 44c3 3 6.5 4.5 10 4.5s7-1.5 10-4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.35" />
+      <path d="M52 18v10M56 18v10M54 28v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
+      <path d="M8 18c0 5 2 7 4 7s4-2 4-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
+    </>
+  ),
+  tudivan: (
+    <>
+      <path
+        d="M10 40V28a5 5 0 0 1 5-5h22a5 5 0 0 1 5 5v12"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        opacity="0.6"
+      />
+      <rect x="6" y="34" width="42" height="12" rx="4" stroke="currentColor" strokeWidth="2" opacity="0.75" />
+      <path d="M12 46v5M42 46v5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
+      <path d="M16 30h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.4" />
+      <path
+        d="M52 12c-3.3 0-6 2.6-6 5.8 0 4.4 6 9.2 6 9.2s6-4.8 6-9.2c0-3.2-2.7-5.8-6-5.8z"
+        fill="currentColor"
+      />
+    </>
+  ),
   'cv-analyzer-ai-portfolio': (
-    <SvgWrap>
-      <rect x="14" y="10" width="36" height="44" rx="2" stroke={accent} strokeWidth="2" fill="rgba(46,166,242,0.12)" />
-      <path d="M20 20h24M20 28h24M20 36h12" stroke={light} strokeWidth="2" strokeLinecap="round" opacity="0.6" />
-      <circle cx="44" cy="44" r="10" fill={accent} opacity="0.9" />
-      <path d="M41 44l2 2 4-4" stroke="#002262" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </SvgWrap>
+    <>
+      <rect x="14" y="8" width="34" height="44" rx="3" stroke="currentColor" strokeWidth="2" opacity="0.6" />
+      <path d="M21 20h20M21 28h20M21 36h11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.4" />
+      <circle cx="44" cy="44" r="10" fill="currentColor" />
+      <path d="M40 44l3 3 5-6" stroke="var(--navy-900)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+    </>
   ),
   TranscribeAI: (
-    <SvgWrap>
-      <rect x="12" y="16" width="40" height="32" rx="4" stroke={accent} strokeWidth="2" fill="rgba(46,166,242,0.1)" />
-      <path d="M22 32h20M25 24h14M28 40h8" stroke={light} strokeWidth="2" strokeLinecap="round" opacity="0.7" />
-      <path d="M12 32c-4-4-4-8 0-12M52 32c4-4 4-8 0-12" stroke={accent} strokeWidth="2" strokeLinecap="round" opacity="0.5" />
-      <path d="M32 10v6M32 48v6" stroke={dim} strokeWidth="1" strokeDasharray="2 2" />
-    </SvgWrap>
-  ),
-  'React-MERN-backend': (
-    <SvgWrap>
-      <rect x="8" y="12" width="48" height="40" rx="4" stroke={accent} strokeWidth="2" fill="rgba(46,166,242,0.12)" />
-      <path d="M16 24h32M16 32h24M16 40h28" stroke={light} strokeWidth="2" strokeLinecap="round" />
-      <circle cx="48" cy="44" r="6" fill={accent} opacity="0.9" />
-      <path d="M46 44l2 2 4-5" stroke="#002262" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </SvgWrap>
-  ),
-  'react-MERN-frontend': (
-    <SvgWrap>
-      <rect x="10" y="14" width="44" height="38" rx="3" stroke={accent} strokeWidth="2" fill="rgba(46,166,242,0.1)" />
-      <rect x="14" y="20" width="36" height="26" rx="2" fill="rgba(0,34,98,0.5)" stroke={dim} strokeWidth="1" />
-      <rect x="18" y="24" width="8" height="8" rx="1" fill={accent} opacity="0.85" />
-      <rect x="30" y="24" width="8" height="8" rx="1" fill={dim} />
-      <rect x="42" y="24" width="8" height="8" rx="1" fill={dim} />
-      <rect x="18" y="36" width="32" height="6" rx="1" fill={light} opacity="0.35" />
-    </SvgWrap>
-  ),
-  'journal-app': (
-    <SvgWrap>
-      <path
-        d="M18 10h20c2 0 4 2 4 4v40c0 2-2 4-4 4H18c-2 0-4-2-4-4V14c0-2 2-4 4-4z"
-        stroke={accent}
-        strokeWidth="2"
-        fill="rgba(46,166,242,0.12)"
-      />
-      <path d="M22 14h12v4H22v-4z" fill={accent} opacity="0.7" />
-      <path d="M22 24h28M22 32h24M22 40h28" stroke={light} strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
-    </SvgWrap>
-  ),
-  'custom-hooks': (
-    <SvgWrap>
-      <path
-        d="M44 12c-6 0-10 4-10 10 0 4 2 7 5 9-8 2-14 9-14 17v8h8v-8c0-4 4-8 9-8h2c5 0 9-4 9-9s-4-9-9-9z"
-        stroke={accent}
-        strokeWidth="2"
-        fill="rgba(46,166,242,0.15)"
-        strokeLinejoin="round"
-      />
-      <circle cx="24" cy="48" r="4" fill={accent} />
-      <path d="M24 44v-10" stroke={accent} strokeWidth="2" strokeLinecap="round" />
-    </SvgWrap>
-  ),
-  'portfolio-react': (
-    <SvgWrap>
-      <rect x="8" y="16" width="48" height="34" rx="3" stroke={accent} strokeWidth="2" fill="rgba(46,166,242,0.1)" />
-      <path d="M8 22h48" stroke={accent} strokeWidth="1.5" opacity="0.6" />
-      <circle cx="14" cy="19" r="2" fill={dim} />
-      <circle cx="21" cy="19" r="2" fill={dim} />
-      <circle cx="28" cy="19" r="2" fill={dim} />
-      <path
-        d="M22 36l4-8 4 8m-6-3h4M38 32l-3 6h6l-3-6z"
-        stroke={light}
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </SvgWrap>
-  ),
-  'react-gife-expert': (
-    <SvgWrap>
-      <rect x="10" y="18" width="44" height="30" rx="3" stroke={accent} strokeWidth="2" fill="rgba(46,166,242,0.12)" />
-      <rect x="14" y="22" width="36" height="22" rx="2" fill="rgba(0,34,98,0.45)" />
-      <path d="M22 26h6v6h-6zM30 26h6v6h-6zM22 34h14v6H22z" fill={accent} opacity="0.55" />
-      <path
-        d="M40 38l6-4v8l-6-4z"
-        fill={light}
-        opacity="0.9"
-      />
-    </SvgWrap>
+    <>
+      <rect x="26" y="8" width="12" height="26" rx="6" fill="currentColor" opacity="0.85" />
+      <path d="M18 28a14 14 0 0 0 28 0" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M32 42v8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M20 54h24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" opacity="0.5" />
+      <path d="M8 22v8M14 18v16M50 18v16M56 22v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.35" />
+    </>
   ),
 };
 
 const fallback = (
-  <SvgWrap>
-    <rect x="12" y="12" width="40" height="40" rx="6" stroke={accent} strokeWidth="2" fill="rgba(46,166,242,0.1)" />
-    <path d="M28 24l12 8-12 8V24z" fill={light} opacity="0.85" />
-  </SvgWrap>
+  <>
+    <rect x="10" y="12" width="44" height="40" rx="6" stroke="currentColor" strokeWidth="2" opacity="0.6" />
+    <path d="M22 24l-6 8 6 8M42 24l6 8-6 8M36 22l-8 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </>
 );
 
-export function ProjectThumb({ slug }) {
-  return <div className="project-thumb">{thumbs[slug] ?? fallback}</div>;
+export function ProjectThumb({ id, className = 'project-thumb' }) {
+  return (
+    <div className={className} aria-hidden="true">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {marks[id] ?? fallback}
+      </svg>
+    </div>
+  );
 }

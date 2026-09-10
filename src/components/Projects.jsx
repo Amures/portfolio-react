@@ -1,141 +1,109 @@
-import { useEffect, useRef } from 'react';
 import { ProjectThumb } from './ProjectThumb';
+import { featuredProjects, repoProjects, githubProfileUrl, repoUrl } from '../data/projects';
+import { useReveal } from '../hooks/useReveal';
 import '../assets/styles/Projects.css';
 
-const GITHUB_USER = 'Amures';
-/** Public repos — same list as https://github.com/Amures?tab=repositories */
-const projects = [
-  {
-    slug: 'cv-analyzer-ai-portfolio',
-    title: 'CV Analyzer AI',
-    description: 'AI-powered CV analysis against job descriptions using Google Gemini.',
-    liveUrl: 'https://cv-analyzer-ai-portfolio.vercel.app/',
-  },
-  {
-    slug: 'TranscribeAI',
-    title: 'TranscribeAI',
-    description:
-      'AI-powered audio/video transcription and translation using Whisper & MyMemory.',
-    liveUrl: 'https://transcribe-ai-eight.vercel.app/',
-  },
-  {
-    slug: 'React-MERN-backend',
-    title: 'MERN backend',
-    description: 'Backend for the MERN + React stack.',
-  },
-  {
-    slug: 'react-MERN-frontend',
-    title: 'MERN frontend',
-    description: 'Calendar app — React frontend.',
-  },
-  {
-    slug: 'journal-app',
-    title: 'Journal app',
-    description: 'Personal journal web app.',
-  },
-  {
-    slug: 'custom-hooks',
-    title: 'Custom hooks',
-    description: 'Reusable React hooks collection.',
-  },
-  {
-    slug: 'portfolio-react',
-    title: 'Portfolio',
-    description: 'This portfolio (React + Vite).',
-  },
-  {
-    slug: 'react-gife-expert',
-    title: 'GifExpert',
-    description: 'GIF search demo app.',
-  },
-].map((p) => ({
-  ...p,
-  url: `https://github.com/${GITHUB_USER}/${p.slug}`,
-}));
+const ExternalIcon = () => (
+  <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true">
+    <path
+      d="M6 3h7v7M13 3L4.5 11.5M11 9.5V13H3V5h3.5"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 const Projects = () => {
-  const scrollRef = useRef(null);
-  const infiniteProjects = [...projects, ...projects];
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    let intervalId;
-    const isMobile = window.innerWidth <= 600;
-
-    const startAutoPlay = () => {
-      if (isMobile) {
-        intervalId = setInterval(() => {
-          const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
-          const halfWidth = scrollWidth / 2;
-          
-          if (scrollLeft >= halfWidth - 50) {
-            scrollContainer.scrollLeft = 0;
-            scrollContainer.scrollBy({ left: clientWidth * 0.85 + 20, behavior: 'smooth' });
-          } else {
-            scrollContainer.scrollBy({ left: clientWidth * 0.85 + 20, behavior: 'smooth' });
-          }
-        }, 4000);
-      }
-    };
-
-    startAutoPlay();
-
-    const stopAutoPlay = () => clearInterval(intervalId);
-
-    scrollContainer.addEventListener('mouseenter', stopAutoPlay);
-    scrollContainer.addEventListener('mouseleave', startAutoPlay);
-    scrollContainer.addEventListener('touchstart', stopAutoPlay);
-    scrollContainer.addEventListener('touchend', startAutoPlay);
-
-    return () => {
-      stopAutoPlay();
-      scrollContainer.removeEventListener('mouseenter', stopAutoPlay);
-      scrollContainer.removeEventListener('mouseleave', startAutoPlay);
-      scrollContainer.removeEventListener('touchstart', stopAutoPlay);
-      scrollContainer.removeEventListener('touchend', startAutoPlay);
-    };
-  }, []);
+  const revealRef = useReveal();
 
   return (
-    <section className="projects-section">
-      <h2>PROJECTS</h2>
-      <p className="projects-intro">
-        Public repositories from my{' '}
-        <a
-          href={`https://github.com/${GITHUB_USER}?tab=repositories`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="projects-intro-link"
-        >
-          GitHub profile
-        </a>
-        .
-      </p>
-      <div className="projects-grid" ref={scrollRef}>
-        {(window.innerWidth <= 600 ? infiniteProjects : projects).map((project, index) => (
-          <article key={`${project.slug}-${index}`} className="project-card">
-            <ProjectThumb slug={project.slug} />
-            <h3>{project.title}</h3>
-            <p className="project-card-desc">{project.description}</p>
-            <div className="project-card-links">
-              {project.liveUrl && (
+    <section id="work" className="section section--center projects" ref={revealRef}>
+      <div className="container">
+        <div className="section-head reveal">
+          <p className="section-eyebrow">Selected work</p>
+          <h2 className="section-title">Products in production</h2>
+          <p className="section-lead">
+            Real applications with real users, not demos. Each one is live — open it and have a
+            look.
+          </p>
+        </div>
+
+        <ul className="projects__grid">
+          {featuredProjects.map((project) => (
+            <li
+              key={project.id}
+              className="project-card reveal"
+              style={{ '--card-accent': project.accent }}
+            >
+              <div className="project-card__cover">
+                <ProjectThumb id={project.id} />
+              </div>
+
+              <div className="project-card__body">
+                <p className="project-card__role">{project.role}</p>
+                <h3 className="project-card__title">{project.title}</h3>
+                <p className="project-card__tagline">{project.tagline}</p>
+                <p className="project-card__desc">{project.description}</p>
+
+                <ul className="project-card__tech">
+                  {project.tech.map((tech) => (
+                    <li key={tech}>{tech}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="project-card__links">
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="live-link"
+                  className="btn btn--primary project-card__cta"
                 >
-                  Live Demo
+                  Visit site
+                  <ExternalIcon />
                 </a>
-              )}
-              <a href={project.url} target="_blank" rel="noopener noreferrer">
-                GitHub
-              </a>
-            </div>
-          </article>
-        ))}
+                {project.repo && (
+                  <a
+                    href={repoUrl(project.repo)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn--ghost project-card__cta"
+                  >
+                    Code
+                  </a>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <div className="repos reveal">
+          <div className="repos__head">
+            <h3 className="repos__title">Also on GitHub</h3>
+            <a
+              href={githubProfileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="repos__all"
+            >
+              All repositories
+              <ExternalIcon />
+            </a>
+          </div>
+
+          <ul className="repos__list">
+            {repoProjects.map((repo) => (
+              <li key={repo.slug}>
+                <a href={repoUrl(repo.slug)} target="_blank" rel="noopener noreferrer">
+                  <span className="repos__name">{repo.title}</span>
+                  <span className="repos__desc">{repo.description}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

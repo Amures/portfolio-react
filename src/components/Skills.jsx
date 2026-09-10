@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import iconCSharp from '../assets/icons/c-sharp.png';
 import iconCpp from '../assets/icons/c-.png';
 import iconCss from '../assets/icons/css.png';
@@ -11,89 +10,78 @@ import iconPython from '../assets/icons/python.png';
 import iconGit from '../assets/icons/git.png';
 import iconUiPath from '../assets/icons/uipath.png';
 import iconVb from '../assets/icons/visualBasic.png';
+import { useReveal } from '../hooks/useReveal';
 import '../assets/styles/Skills.css';
 
-const skills = [
-  { name: 'C#', icon: iconCSharp },
-  { name: 'C++', icon: iconCpp },
-  { name: 'CSS3', icon: iconCss },
-  { name: 'React.JS', icon: iconReact },
-  { name: 'HTML', icon: iconHtml },
-  { name: 'Java', icon: iconJava },
-  { name: 'JavaScript', icon: iconJs },
-  { name: 'SQL', icon: iconSql },
-  { name: 'Python', icon: iconPython },
-  { name: 'Git', icon: iconGit },
-  { name: 'UiPath', icon: iconUiPath },
-  { name: 'VB', icon: iconVb },
+const GROUPS = [
+  {
+    title: 'Front end',
+    items: [
+      { name: 'React', icon: iconReact },
+      { name: 'JavaScript', icon: iconJs },
+      { name: 'HTML5', icon: iconHtml },
+      { name: 'CSS3', icon: iconCss },
+    ],
+  },
+  {
+    title: 'Back end & data',
+    items: [
+      { name: 'Python', icon: iconPython },
+      { name: 'SQL', icon: iconSql },
+      { name: 'Java', icon: iconJava },
+      { name: 'C#', icon: iconCSharp },
+    ],
+  },
+  {
+    title: 'Tooling & other',
+    items: [
+      { name: 'Git', icon: iconGit },
+      { name: 'C++', icon: iconCpp },
+      { name: 'UiPath', icon: iconUiPath },
+      { name: 'Visual Basic', icon: iconVb },
+    ],
+  },
 ];
 
 const Skills = () => {
-  const scrollRef = useRef(null);
-  
-  // Create a doubled array for infinite scrolling
-  const infiniteSkills = [...skills, ...skills];
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    let intervalId;
-    const isMobile = window.innerWidth <= 600;
-
-    const startAutoPlay = () => {
-      if (isMobile) {
-        intervalId = setInterval(() => {
-          const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
-          const halfWidth = scrollWidth / 2;
-          
-          // If we've scrolled past the first set, jump back instantly to the start of the second set
-          if (scrollLeft >= halfWidth) {
-            scrollContainer.scrollLeft = 0;
-            // Then do the smooth scroll to the next item
-            scrollContainer.scrollBy({ left: 160, behavior: 'smooth' });
-          } else {
-            scrollContainer.scrollBy({ left: 160, behavior: 'smooth' });
-          }
-        }, 3000);
-      }
-    };
-
-    startAutoPlay();
-
-    const stopAutoPlay = () => clearInterval(intervalId);
-
-    scrollContainer.addEventListener('mouseenter', stopAutoPlay);
-    scrollContainer.addEventListener('mouseleave', startAutoPlay);
-    scrollContainer.addEventListener('touchstart', stopAutoPlay);
-    scrollContainer.addEventListener('touchend', startAutoPlay);
-
-    return () => {
-      stopAutoPlay();
-      scrollContainer.removeEventListener('mouseenter', stopAutoPlay);
-      scrollContainer.removeEventListener('mouseleave', startAutoPlay);
-      scrollContainer.removeEventListener('touchstart', stopAutoPlay);
-      scrollContainer.removeEventListener('touchend', startAutoPlay);
-    };
-  }, []);
+  const revealRef = useReveal();
 
   return (
-    <article className="wrapContent bg1">
-      <div className="subWrapAM">
-        <div>
-          <h2>SKILLS</h2>
-          <br />
-          <div className="skills-grid" ref={scrollRef}>
-            {(window.innerWidth <= 600 ? infiniteSkills : skills).map((skill, index) => (
-              <div key={`${skill.name}-${index}`} className="skill-card">
-                <img src={skill.icon} alt={`${skill.name} icon`} className="skill-icon" />
-                <p>{skill.name}</p>
-              </div>
-            ))}
-          </div>
+    <section id="skills" className="section section--center skills" ref={revealRef}>
+      <div className="container">
+        <div className="section-head reveal">
+          <p className="section-eyebrow">Skills</p>
+          <h2 className="section-title">The toolbox</h2>
+          <p className="section-lead">
+            The languages and tools I reach for most. The list is ordered by how often I actually
+            use them, not by how good the logo looks.
+          </p>
+        </div>
+
+        <div className="skills__groups">
+          {GROUPS.map((group) => (
+            <div key={group.title} className="skill-group reveal">
+              <h3 className="skill-group__title">{group.title}</h3>
+              <ul className="skill-group__list">
+                {group.items.map((skill) => (
+                  <li key={skill.name} className="skill-card">
+                    <img
+                      src={skill.icon}
+                      alt=""
+                      width="48"
+                      height="48"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span>{skill.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
-    </article>
+    </section>
   );
 };
 

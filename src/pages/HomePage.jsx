@@ -4,26 +4,18 @@ import Projects from '../components/Projects';
 import Skills from '../components/Skills';
 import Contact from '../components/Contact';
 
-const HomePage = () => {
-  return (
-    <div>
-      <section className="wrapContent bg1" id="home">
-        <Hero />
-      </section>
-      <section className="wrapContent bg1" id="about">
-        <About />
-      </section>
-      <section className="wrapContent bg1" id="projects">
-        <Projects />
-      </section>
-      <section className="wrapContent bg1" id="skills">
-        <Skills />
-      </section>
-      <section className="wrapContent bg1" id="contact">
-        <Contact />
-      </section>
-    </div>
-  );
-};
+/**
+ * One page, five sections. Each component renders its own <section id>, which
+ * is what the header links and the scroll-spy hook target.
+ */
+const HomePage = () => (
+  <>
+    <Hero />
+    <About />
+    <Projects />
+    <Skills />
+    <Contact />
+  </>
+);
 
 export default HomePage;

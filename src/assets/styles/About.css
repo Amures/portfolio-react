@@ -1,173 +1,89 @@
-section {
-  padding: 2rem;
-}
-  
-h2 {
-  color: #333;
-}
-  
-p {
-  font-size: 1.2rem;
-}
-
-.subWrapAM {
-  width: 100%;
-  max-width: 1200px;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: center;
+.about__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
   align-items: center;
-  gap: 30px;
-  margin: 0 auto;
-}  
+  gap: clamp(2rem, 5vw, 4rem);
+}
 
-/* IMG */
-/* Contenedor de la imagen */
-.img-aboutMe {
-  width: 300px;
-  height: 325px;
-  border: 5px solid var(--web-color);
-  border-radius: 15px;
+/* ---------- Photo ---------- */
+.about__photo {
   position: relative;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
 
-/* Imagen principal */
-.img-aboutMe img {
+.about__photo::after {
+  content: '';
   position: absolute;
-  top: -20px;
-  left: -14px;
-  height: 335px;
-  width: 300px;
-  object-fit: cover;
-  border-radius: 15px;
-  opacity: 0;
-  transition: opacity 1.25s ease;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(0, 16, 47, 0.55));
+  pointer-events: none;
 }
 
-.image.fade-in {
+.about__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.about__photo img.is-current {
   opacity: 1;
 }
 
-.image.fade-out {
-  opacity: 0;
-}
-
-
-/* Contenido */
-
-.subWrapAM .content-aboutMe {
-  max-width: 500px;
+/* ---------- Copy ---------- */
+.about__copy {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 20px;
-  font-size: large;
+  align-items: flex-start;
+  gap: 1.1rem;
 }
 
-.subWrapAM .content-aboutMe h2 {
-  color: #fff;
+.about__copy p {
+  max-width: 62ch;
+  color: var(--text-dim);
+  font-size: var(--step-1);
 }
 
-.subWrapAM .content-aboutMe p {
-  color: #b0b0b0;
-  font-size: 1.15rem; /* Reduced from 23px */
-  line-height: 1.6;
-}
-
-/* Contenedor de los botones */
-.btnContainer {
+.about__actions {
   display: flex;
-  gap: 15px;
-  justify-content: center;
-  margin-top: 1em;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 0.75rem;
 }
 
-.btnAboutMe {
-  display: flex;
-  align-items: center;
-  --glow-color: rgb(35, 33, 166);
-  --glow-spread-color: rgba(35, 23, 208, 0.781);
-  --enhanced-glow-color: rgb(60, 50, 206);
-  --btn-color: rgb(6, 6, 36);
-  border: .25em solid var(--glow-color);
-  padding: 1em 3em;
-  color: #fff;
-  font-size: 15px;
-  font-weight: bold;
-  background-color: var(--btn-color);
-  border-radius: 1em;
-  outline: none;
-  box-shadow: 0 0 0.5em .15em var(--glow-color),
-              0 0 1.5em 0.5em var(--glow-spread-color),
-              inset 0 0 .75em .25em var(--glow-color);
-  text-shadow: 0 0 .5em var(--glow-color);
-  position: relative;
-  transition: all 0.3s;
-  margin-top: 2em;
-}
-
-.btnAboutMe::after {
-  pointer-events: none;
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: var(--glow-spread-color);
-  filter: blur(1em);
-  opacity: .4;
-  transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
-  clip-path: inset(0 10em 0 10em);
-}
-
-.btnAboutMe:hover {
-  color: var(--btn-color);
-  background-color: var(--glow-color);
-  box-shadow: 0 0 0.5em .15em var(--glow-color),
-              0 0 2em 1em var(--glow-spread-color),
-              inset 0 0 .75em .25em var(--glow-color);
-}
-
-.btnAboutMe:active {
-  box-shadow: 0 0 0.3em .15em var(--glow-color),
-              0 0 1.5em 0.5em var(--glow-spread-color),
-              inset 0 0 .5em .25em var(--glow-color);
-}
-
-
-@media only screen and (max-width: 1000px) {
-  .subWrapAM {
-    margin: 30px 0;
-    flex-direction: column;
-    gap: 40px;
-    padding: 0 16px;
-  }
-
-  .subWrapAM .content-aboutMe {
-    align-items: center;
+@media (max-width: 900px) {
+  .about__inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
     text-align: center;
-    gap: 20px;
   }
 
-  .subWrapAM .content-aboutMe p {
-    font-size: 1.1rem;
-    line-height: 1.6;
+  .about__photo {
+    max-width: min(280px, 70vw);
   }
-  
-  .img-aboutMe {
-    width: 260px;
-    height: 280px;
+
+  .about__copy {
+    align-items: center;
   }
-  
-  .img-aboutMe img {
-    height: 290px;
-    width: 260px;
+
+  .about__actions {
+    justify-content: center;
+    width: 100%;
   }
-  
-  .btnAboutMe {
-    padding: 0.8em 2em;
-    font-size: 14px;
-    margin-top: 1.5em;
+}
+
+@media (max-width: 420px) {
+  .about__actions .btn {
+    width: 100%;
   }
 }
