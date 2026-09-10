@@ -25,6 +25,14 @@ Copy `.env.example` to `.env` and fill in the contact-form key:
 | `VITE_WEB3FORMS_ACCESS_KEY` | [Web3Forms](https://web3forms.com) access key used by the contact form. If it is missing, the form tells the visitor to email instead of failing silently. |
 
 On Vercel the same variable has to be set in *Project → Settings → Environment Variables*.
+Until it is, the form is inert: it tells the visitor to email instead.
+
+> **Anything matching `envPrefix` in `vite.config.js` ends up in the JavaScript
+> every visitor downloads.** The prefix is deliberately narrowed to
+> `VITE_WEB3FORMS_` rather than Vite's default `VITE_`, because Vercel creates
+> `VITE_`-prefixed copies of its system variables and those were being baked
+> into the bundle (commit message, project and deployment ids, repo owner,
+> commit author). Never put a secret in a variable that reaches this file.
 
 ## Structure
 
