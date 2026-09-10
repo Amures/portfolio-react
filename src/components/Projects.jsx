@@ -25,7 +25,7 @@ const Projects = () => {
           <p className="section-eyebrow">Selected work</p>
           <h2 className="section-title">Products in production</h2>
           <p className="section-lead">
-            Real applications with real users, not demos. Each one is live — open it and have a
+            Real applications with real users, not demos. Each one is live, so open it and have a
             look.
           </p>
         </div>

@@ -51,13 +51,13 @@ const About = () => {
 
           <p>
             I build web and mobile applications with an emphasis on clarity, performance and
-            maintainability. Most of my work is end to end — I am as comfortable shaping the data
+            maintainability. Most of my work is end to end: I am as comfortable shaping the data
             model and the API as I am polishing the screen a user actually touches.
           </p>
           <p>
             Lately that has meant three products in production: a marketplace for pickup football,
             a voice-driven venue discovery platform, and a teleconsultation tool where a leak of
-            clinical records is the worst thing that could happen — so the whole design is
+            clinical records is the worst thing that could happen, so the whole design is
             subordinated to preventing it.
           </p>
 
@@ -67,7 +67,7 @@ const About = () => {
               download="Antonio-Mures-Software-Engineer-2026.pdf"
               className="btn btn--primary"
             >
-              Download résumé
+              Download CV
             </a>
             <a
               href={BOOKING_URL}

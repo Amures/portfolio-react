@@ -18,7 +18,7 @@ const Hero = () => {
 
           <p className="hero__lead">
             From the first sketch to the deployed app: web front ends, mobile apps, APIs and the
-            infrastructure underneath. Three of my projects are live right now — a football
+            infrastructure underneath. Three of my projects are live right now: a football
             marketplace, a venue discovery platform and a teleconsultation tool for therapists.
           </p>
 

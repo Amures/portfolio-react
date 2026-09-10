@@ -1,4 +1,4 @@
-# Portfolio — Antonio Mures
+# Antonio Mures, portfolio
 
 Single-page portfolio built with React + Vite. No UI framework: the design system
 lives in `src/index.css` as CSS custom properties, and each component keeps its own
@@ -55,9 +55,9 @@ src/
 
 Everything in the *Work* section comes from `src/data/projects.js`:
 
-- `featuredProjects` — the big cards. Give it an `id`, copy, `tech`, `liveUrl`,
+- `featuredProjects`: the big cards. Give it an `id`, copy, `tech`, `liveUrl`,
   an `accent` colour (it tints the card) and optionally `repo`.
-- `repoProjects` — the compact "Also on GitHub" list, keyed by repo `slug`.
+- `repoProjects`: the compact "Also on GitHub" list, keyed by repo `slug`.
 
 If you add a featured project, add a matching SVG mark under the same `id` in
 `components/ProjectThumb.jsx`; without one it falls back to a generic code icon.

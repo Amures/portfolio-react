@@ -60,7 +60,7 @@ const Contact = () => {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `Portfolio contact — ${formData.name}`,
+          subject: `Portfolio contact from ${formData.name}`,
           ...formData,
         }),
       });
@@ -70,7 +70,7 @@ const Contact = () => {
       if (result.success) {
         setStatus({
           state: 'success',
-          message: 'Thanks! Your message is on its way — I usually reply within a day.',
+          message: 'Thanks! Your message is on its way. I usually reply within a day.',
         });
         setFormData(initialFormState);
       } else {
@@ -196,7 +196,7 @@ const Contact = () => {
                 />
               </div>
 
-              {/* Honeypot — hidden from people, irresistible to bots. */}
+              {/* Honeypot: hidden from people, irresistible to bots. */}
               <input
                 type="text"
                 name="company"

@@ -1,16 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useScrollFlag } from '../hooks/useScrollFlag';
 import '../assets/styles/ScrollToTopButton.css';
 
 const ScrollToTopButton = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const toggleVisibility = () => setIsVisible(window.scrollY > 400);
-
-    toggleVisibility();
-    window.addEventListener('scroll', toggleVisibility, { passive: true });
-    return () => window.removeEventListener('scroll', toggleVisibility);
-  }, []);
+  const isVisible = useScrollFlag(400);
 
   const scrollToTop = () => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

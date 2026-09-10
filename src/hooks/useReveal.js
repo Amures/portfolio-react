@@ -28,7 +28,9 @@ export function useReveal() {
           observer.unobserve(entry.target);
         });
       },
-      { rootMargin: '0px 0px -10% 0px', threshold: 0.1 },
+      // Positive bottom margin fires just *before* the element scrolls in, so
+      // it has finished appearing by the time you get there.
+      { rootMargin: '0px 0px 15% 0px', threshold: 0 },
     );
 
     items.forEach((el) => observer.observe(el));

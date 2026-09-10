@@ -1,7 +1,7 @@
 const GITHUB_USER = 'Amures';
 
 /**
- * Featured products — live, in production, with a real audience.
+ * Featured products: live, in production, with a real audience.
  * `id` is also the key used by ProjectThumb to pick an illustration.
  */
 export const featuredProjects = [
@@ -43,7 +43,7 @@ export const featuredProjects = [
     title: 'CV Analyzer AI',
     tagline: 'Match a CV against a job description',
     description:
-      'Upload a CV and a job posting and get a structured read on how well they line up — matching skills, gaps and suggested rewrites — powered by Google Gemini.',
+      'Upload a CV and a job posting and get a structured read on how well they line up: matching skills, gaps and suggested rewrites, powered by Google Gemini.',
     liveUrl: 'https://cv-analyzer-ai-portfolio.vercel.app/',
     repo: 'cv-analyzer-ai-portfolio',
     role: 'Solo project',
@@ -74,7 +74,7 @@ export const repoProjects = [
   {
     slug: 'react-MERN-frontend',
     title: 'MERN frontend',
-    description: 'Calendar app — React front end.',
+    description: 'Calendar app, React front end.',
   },
   {
     slug: 'journal-app',
@@ -94,7 +94,7 @@ export const repoProjects = [
   {
     slug: 'portfolio-react',
     title: 'This portfolio',
-    description: 'The site you are looking at — React + Vite, no UI framework.',
+    description: 'The site you are looking at. React + Vite, no UI framework.',
   },
 ];
 

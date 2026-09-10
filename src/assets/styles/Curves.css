@@ -20,7 +20,6 @@
   width: 200%;
   height: 100%;
   transform-origin: center bottom;
-  will-change: transform;
 
   /* The PNG supplies the silhouette; the background supplies the colour. */
   -webkit-mask-image: var(--wave);
@@ -45,6 +44,18 @@
 .waves__layer--3 {
   background: var(--footer-bg);
   animation: wave-drift 30s linear infinite;
+}
+
+/* Only pay for the animation while the band is actually on screen. */
+.waves__layer--2,
+.waves__layer--3 {
+  animation-play-state: paused;
+}
+
+.waves.is-active .waves__layer--2,
+.waves.is-active .waves__layer--3 {
+  animation-play-state: running;
+  will-change: transform;
 }
 
 @keyframes wave-drift {

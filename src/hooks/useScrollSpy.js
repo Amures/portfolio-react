@@ -1,35 +1,44 @@
 import { useEffect, useState } from 'react';
 
 /**
- * Returns the id of the section currently occupying the top of the viewport.
- * Used to highlight the matching link in the header.
+ * Returns the id of the section currently in the middle of the viewport.
+ *
+ * Uses IntersectionObserver rather than a scroll listener on purpose: reading
+ * getBoundingClientRect() on every scroll event forced a style recalculation
+ * per frame (the wave animation keeps styles dirty), which showed up as
+ * sluggish scrolling. The observer costs nothing between crossings.
  */
-export function useScrollSpy(ids, offset = 120) {
+export function useScrollSpy(ids) {
   const [activeId, setActiveId] = useState(ids[0]);
 
   useEffect(() => {
-    const onScroll = () => {
-      let current = ids[0];
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
 
-      for (const id of ids) {
-        const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= offset) current = id;
-      }
+    if (!sections.length || typeof IntersectionObserver === 'undefined') return;
 
-      // Anything at the very bottom of the page counts as the last section.
-      const atBottom =
-        window.innerHeight + window.scrollY >= document.body.scrollHeight - 2;
-      setActiveId(atBottom ? ids[ids.length - 1] : current);
-    };
+    const visible = new Set();
 
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    };
-  }, [ids, offset]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) visible.add(entry.target.id);
+          else visible.delete(entry.target.id);
+        });
+
+        // Several sections can straddle the band; the first in document
+        // order is the one the reader is actually on.
+        const current = ids.find((id) => visible.has(id));
+        if (current) setActiveId(current);
+      },
+      // A thin band across the middle of the viewport.
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [ids]);
 
   return activeId;
 }

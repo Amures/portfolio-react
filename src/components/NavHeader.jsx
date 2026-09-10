@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import logo from '../assets/logo1.png';
 import { useScrollSpy } from '../hooks/useScrollSpy';
+import { useScrollFlag } from '../hooks/useScrollFlag';
 import '../assets/styles/NavHeader.css';
 
 const LINKS = [
@@ -15,15 +16,8 @@ const SECTION_IDS = LINKS.map((link) => link.id);
 
 const NavHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const isScrolled = useScrollFlag(12);
   const activeId = useScrollSpy(SECTION_IDS);
-
-  useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   // Lock the page behind the open drawer and allow Escape to close it.
   useEffect(() => {
@@ -46,7 +40,7 @@ const NavHeader = () => {
   return (
     <header className={`site-header ${isScrolled ? 'is-scrolled' : ''}`}>
       <div className="site-header__inner container">
-        <a href="#home" className="site-header__logo" aria-label="Antonio Mures — home">
+        <a href="#home" className="site-header__logo" aria-label="Antonio Mures, home">
           <img src={logo} alt="" width="120" height="34" />
         </a>
 

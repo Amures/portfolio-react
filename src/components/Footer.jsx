@@ -38,7 +38,7 @@ const Footer = () => (
       </ul>
 
       <p className="site-footer__note">
-        © {new Date().getFullYear()} Antonio Mures — built with React and Vite.
+        © {new Date().getFullYear()} Antonio Mures. Built with React and Vite.
       </p>
     </div>
   </footer>
