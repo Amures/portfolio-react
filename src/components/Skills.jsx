@@ -60,7 +60,7 @@ const Skills = () => {
 
         <div className="skills__groups">
           {GROUPS.map((group) => (
-            <div key={group.title} className="skill-group reveal">
+            <div key={group.title} className="skill-group lit-edge reveal">
               <h3 className="skill-group__title">{group.title}</h3>
               <ul className="skill-group__list">
                 {group.items.map((skill) => (

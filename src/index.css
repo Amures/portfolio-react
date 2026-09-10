@@ -13,11 +13,13 @@
     from sunlit shallows to the dark below; --footer-bg is the seabed and has
     to stay darker than --sea-deep or the wave silhouettes above it vanish.
   */
-  --sea-surface: #0c418c;
-  --sea-shallow: #073272;
-  --sea-mid: #002262;
-  --sea-lower: #001a4c;
-  --sea-deep: #00143a;
+  --sea-sunlit: #12588f; /* water absorbs red first, so the top reads cyan */
+  --sea-surface: #0c4a8c;
+  --sea-shallow: #063574;
+  --sea-mid: #002262; /* brand blue, mid-water */
+  --sea-lower: #001845;
+  --sea-dark: #000f2c;
+  --sea-deep: #00081c;
 
   --accent: #2ea6f2;
   --accent-soft: #6fd3ff;
@@ -26,7 +28,7 @@
   /* Surfaces */
   --surface: #06214f;
   --surface-2: #0a2a63;
-  --footer-bg: #00081c; /* the seabed: darkest thing on the page */
+  --footer-bg: #00040f; /* the seabed: darkest thing on the page */
   --border: rgba(110, 180, 240, 0.18);
   --border-strong: rgba(110, 180, 240, 0.38);
 
@@ -100,12 +102,18 @@ body {
   line-height: 1.65;
   color: var(--text);
   background-color: var(--sea-deep);
+  /*
+    Uneven stops on purpose: light falls off fast just under the surface and
+    then slowly, so an even ramp reads as a gradient rather than as water.
+  */
   background-image: linear-gradient(
     180deg,
-    var(--sea-surface) 0%,
-    var(--sea-shallow) 14%,
+    var(--sea-sunlit) 0%,
+    var(--sea-surface) 7%,
+    var(--sea-shallow) 20%,
     var(--sea-mid) 42%,
-    var(--sea-lower) 72%,
+    var(--sea-lower) 66%,
+    var(--sea-dark) 85%,
     var(--sea-deep) 100%
   );
   background-repeat: no-repeat;
@@ -198,20 +206,25 @@ ul {
   margin-bottom: clamp(2rem, 5vw, 3.25rem);
 }
 
+/* An editorial kicker rather than a pill: the rule reads as a waterline. */
 .section-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.8rem;
   align-self: flex-start;
-  padding: 0.3rem 0.85rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: rgba(46, 166, 242, 0.08);
   color: var(--accent-soft);
   font-size: var(--step--1);
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: clamp(1.5rem, 4vw, 2.75rem);
+  height: 1px;
+  flex-shrink: 0;
+  background: linear-gradient(90deg, transparent, var(--accent));
 }
 
 .section-title {
@@ -232,6 +245,38 @@ ul {
 
 .section--center .section-eyebrow {
   align-self: center;
+}
+
+/* Centred sections get the rule on both sides so the kicker stays balanced. */
+.section--center .section-eyebrow::after {
+  content: '';
+  width: clamp(1.5rem, 4vw, 2.75rem);
+  height: 1px;
+  flex-shrink: 0;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+/*
+  A thin highlight along the top edge of a panel, as if it were catching the
+  light coming down through the water.
+*/
+.lit-edge {
+  position: relative;
+}
+
+.lit-edge::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(190, 226, 255, 0.4) 25%,
+    rgba(190, 226, 255, 0.4) 75%,
+    transparent
+  );
 }
 
 /* =========================================================

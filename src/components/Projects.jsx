@@ -34,7 +34,7 @@ const Projects = () => {
           {featuredProjects.map((project) => (
             <li
               key={project.id}
-              className="project-card reveal"
+              className="project-card lit-edge reveal"
               style={{ '--card-accent': project.accent }}
             >
               <div className="project-card__cover">
@@ -79,7 +79,7 @@ const Projects = () => {
           ))}
         </ul>
 
-        <div className="repos reveal">
+        <div className="repos lit-edge reveal">
           <div className="repos__head">
             <h3 className="repos__title">Also on GitHub</h3>
             <a

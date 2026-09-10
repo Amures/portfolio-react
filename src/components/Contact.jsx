@@ -112,7 +112,7 @@ const Contact = () => {
           </ul>
         </div>
 
-        <div className="contact__panel reveal">
+        <div className="contact__panel lit-edge reveal">
           <div className="contact__tabs" role="tablist" aria-label="How to get in touch">
             <button
               type="button"
