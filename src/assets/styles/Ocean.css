@@ -1,0 +1,79 @@
+/*
+  Sits behind everything (#root isolates the stacking context, so z-index -1
+  stays above the body gradient and below the content).
+*/
+.ocean {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------
+   Sunlight from the surface
+   Only near the top: by the second section you are too deep for it.
+   Static, so it is rasterised once and costs nothing per frame.
+   --------------------------------------------------------------- */
+.ocean__rays {
+  position: absolute;
+  top: -12vh;
+  left: -25%;
+  width: 150%;
+  height: 155vh;
+  background-image: repeating-linear-gradient(
+    99deg,
+    transparent 0 58px,
+    rgba(150, 214, 255, 0.075) 58px 92px,
+    transparent 92px 104px,
+    rgba(150, 214, 255, 0.045) 104px 126px,
+    transparent 126px 208px
+  );
+  filter: blur(26px);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 4%, transparent 76%);
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 4%, transparent 76%);
+  will-change: transform;
+}
+
+/* ---------------------------------------------------------------
+   Marine snow
+   A canvas, painted from Ocean.jsx. See the note there for why this
+   is not two CSS layers.
+   --------------------------------------------------------------- */
+.ocean__motes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------------------------------------------------------------
+   The current that follows the pointer
+   Positioned entirely by transform from Ocean.jsx.
+   --------------------------------------------------------------- */
+.ocean__glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 46vmax;
+  height: 46vmax;
+  background: radial-gradient(
+    circle,
+    rgba(90, 190, 255, 0.16),
+    rgba(70, 165, 240, 0.07) 42%,
+    transparent 68%
+  );
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  will-change: transform;
+}
+
+.ocean__glow.is-lit {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ocean__glow {
+    display: none;
+  }
+}

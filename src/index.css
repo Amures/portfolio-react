@@ -8,6 +8,17 @@
   --navy-800: #002262; /* brand background */
   --navy-700: #062e7c;
 
+  /*
+    The water column. The page reads top to bottom as a descent, so these run
+    from sunlit shallows to the dark below; --footer-bg is the seabed and has
+    to stay darker than --sea-deep or the wave silhouettes above it vanish.
+  */
+  --sea-surface: #0c418c;
+  --sea-shallow: #073272;
+  --sea-mid: #002262;
+  --sea-lower: #001a4c;
+  --sea-deep: #00143a;
+
   --accent: #2ea6f2;
   --accent-soft: #6fd3ff;
   --accent-ink: #00193f; /* text on top of accent */
@@ -15,7 +26,7 @@
   /* Surfaces */
   --surface: #06214f;
   --surface-2: #0a2a63;
-  --footer-bg: #001233;
+  --footer-bg: #00081c; /* the seabed: darkest thing on the page */
   --border: rgba(110, 180, 240, 0.18);
   --border-strong: rgba(110, 180, 240, 0.38);
 
@@ -76,32 +87,31 @@ body {
   overflow-x: clip;
 }
 
+/*
+  The water column itself. This gradient spans the whole document rather than
+  the viewport, so scrolling the page *is* the descent: shallows at the hero,
+  dark water by the contact form. Deliberately not background-attachment:
+  fixed, which repaints the viewport on every scroll frame.
+*/
 body {
   min-height: 100vh;
   font-family: var(--font-body);
   font-size: var(--step-0);
   line-height: 1.65;
   color: var(--text);
-  background-color: var(--navy-800);
+  background-color: var(--sea-deep);
+  background-image: linear-gradient(
+    180deg,
+    var(--sea-surface) 0%,
+    var(--sea-shallow) 14%,
+    var(--sea-mid) 42%,
+    var(--sea-lower) 72%,
+    var(--sea-deep) 100%
+  );
+  background-repeat: no-repeat;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/*
-  The ambient gradients get their own fixed layer. On `body` with
-  background-attachment: fixed they forced a full-viewport repaint on every
-  scroll frame, which is what made scrolling feel heavy.
-*/
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image:
-    radial-gradient(900px 520px at 82% -8%, rgba(46, 166, 242, 0.16), transparent 60%),
-    radial-gradient(720px 480px at -10% 22%, rgba(111, 211, 255, 0.09), transparent 60%);
 }
 
 #root {
