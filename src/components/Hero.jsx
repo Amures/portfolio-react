@@ -2,14 +2,22 @@ import heroIllustration from '../assets/imgs-hero/nbg-work.svg';
 import { BOOKING_URL } from '../utils/booking';
 import '../assets/styles/Hero.css';
 
-const STACK = ['React', 'React Native', 'Next.js', 'Node · TypeScript', 'Python', 'PostgreSQL'];
+const STACK = [
+  'React',
+  'React Native',
+  'Next.js',
+  'Node · TypeScript',
+  'Python',
+  'UiPath · RPA',
+  'PostgreSQL',
+];
 
 const Hero = () => {
   return (
     <section id="home" className="section hero">
       <div className="container hero__inner">
         <div className="hero__copy">
-          <p className="section-eyebrow">Software developer · Uruguay</p>
+          <p className="section-eyebrow">Software engineer &amp; RPA expert · Uruguay</p>
 
           <h1 className="hero__title">
             Hi, I&apos;m Antonio Mures.

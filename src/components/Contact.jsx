@@ -4,8 +4,8 @@ import { useReveal } from '../hooks/useReveal';
 import '../assets/styles/Contact.css';
 
 const EMAIL = 'am.softwaresolutions4@gmail.com';
-const PHONE_DISPLAY = '+353 83 487 9683';
-const PHONE_HREF = '+353834879683';
+const PHONE_DISPLAY = '+598 95 254 671';
+const PHONE_HREF = '+59895254671';
 
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
@@ -61,6 +61,8 @@ const Contact = () => {
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
           subject: `Portfolio contact from ${formData.name}`,
+          // Lets you hit reply in your inbox and answer the sender directly.
+          replyto: formData.email,
           ...formData,
         }),
       });
