@@ -36,24 +36,6 @@ const marks = {
       <path d="M8 18c0 5 2 7 4 7s4-2 4-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
     </>
   ),
-  tudivan: (
-    <>
-      <path
-        d="M10 40V28a5 5 0 0 1 5-5h22a5 5 0 0 1 5 5v12"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        opacity="0.6"
-      />
-      <rect x="6" y="34" width="42" height="12" rx="4" stroke="currentColor" strokeWidth="2" opacity="0.75" />
-      <path d="M12 46v5M42 46v5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
-      <path d="M16 30h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.4" />
-      <path
-        d="M52 12c-3.3 0-6 2.6-6 5.8 0 4.4 6 9.2 6 9.2s6-4.8 6-9.2c0-3.2-2.7-5.8-6-5.8z"
-        fill="currentColor"
-      />
-    </>
-  ),
   'cv-analyzer-ai-portfolio': (
     <>
       <rect x="14" y="8" width="34" height="44" rx="3" stroke="currentColor" strokeWidth="2" opacity="0.6" />
