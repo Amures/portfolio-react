@@ -28,17 +28,6 @@ export const featuredProjects = [
     accent: '#ff8a5b',
   },
   {
-    id: 'tudivan',
-    title: 'Tu Diván',
-    tagline: 'Teleconsultation built for therapists',
-    description:
-      'Practice platform for independent psychologists: video session, encrypted clinical notes and scheduling in a single screen, so the clinical record and the invoice fall out of the session itself. Multi-tenant with per-organisation encryption keys.',
-    liveUrl: 'https://tudivan-web.vercel.app/',
-    role: 'Full-stack · product architecture and implementation',
-    tech: ['Next.js 15', 'TypeScript', 'PostgreSQL', 'BullMQ', 'Turborepo'],
-    accent: '#8b7cf6',
-  },
-  {
     id: 'cv-analyzer-ai-portfolio',
     title: 'CV Analyzer AI',
     tagline: 'Match a CV against a job description',
